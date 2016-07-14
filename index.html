@@ -2,38 +2,48 @@
 <html ng-app="fizzbuzz">
   <head>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
-  <body ng-controller="FizzbuzzController as fb">
+  <body>
+  	<h1>FizzBuzz 2.0</h1>
+	<section id="rules" class="col-md-6 col-sm-12" ng-controller="AddRuleController as rules">
+		<label id="count-to">Count to: <input type="number" min="1" max="999" ng-model="rules.countTo.count"></label>
+		<div id="rule-container">
+			<h2>Rules</h2>
+			<ol id="set-rules">
 
-	<section id="rules" ng-controller="AddRuleController as rules">
-		<ul id="set-rules">
-			
-		</ul>
-		<button ng-hide="rules.showNumberBtns || rules.showOperatorBtns || rules.showFinishingBtns" ng-click="rules.addRule()">Add Rule</button>
-		<div>
-<!-- 			<p ng-show="rules.showNumberBtns || rules.showOperatorBtns">If number is divisible by:</p>
- -->		<button ng-show="rules.showNumberBtns" ng-repeat="number in rules.numbers" ng-click="rules.addNumber(number.toString())">{{number}}</button>
-			<div ng-show="rules.showOperatorBtns">
-				<button ng-click="rules.setOperator('and')">AND</button>
-				<button ng-click="rules.setOperator('or')">OR</button>
-				<button ng-click="rules.print()">Then print...</button>
+			</ol>
+			<ul id="live-rule" ng-show="rules.showNumberBtns || rules.showOperatorBtns || rules.showFinishingBtns">
+				<li>if number is divisible by {{rules.allRules[rules.getCurrentRule()].conditions}} then print {{rules.allRules[rules.getCurrentRule()].output}}</li>
+			</ul>
+
+			<div id="new-rule-btns">
+				<button ng-hide="rules.showNumberBtns || rules.showOperatorBtns || rules.showFinishingBtns" ng-click="rules.addRule()">Add Rule</button>
+				<button class="numbers" ng-show="rules.showNumberBtns" ng-repeat="number in rules.numbers" ng-click="rules.addNumber(number.toString())">{{number}}</button>
+				<div id="andOrPrint" ng-show="rules.showOperatorBtns">
+					<button ng-click="rules.setOperator('and')">AND</button>
+					<button ng-click="rules.setOperator('or')">OR</button>
+					<button ng-click="rules.print()">Then print...</button>
+				</div>
+				<div ng-show="rules.showFinishingBtns">
+					<input type="text" ng-model="rules.allRules[rules.getCurrentRule()].output" placeholder="FizzBuzz">
+					<button ng-click="rules.saveRule()">Save Rule</button>	
+				</div>
 			</div>
+
+			<button id="clear" ng-click="rules.clearRules()">Clear</button>
+			<p id="sidenote">*in order of priority</p>
 		</div>
-		<p id="rule-output">if number is divisible by {{rules.allRules[rules.allRules.length-1].output}} then print {{rules.allRules[rules.allRules.length-1].word}}</p>
-		<div ng-show="rules.showFinishingBtns">
-			<input type="text" ng-model="rules.allRules[rules.allRules.length-1].word" placeholder="FizzBuzz">
-			<button ng-click="rules.appendRule()">Save Rule</button>	
-		</div>
-	<p>*old rules overwrite new rules if there is overlap</p>
-	<button ng-click="rules.displayOutput()">Display Output</button>
 	</section>
 
-	<section id="output">
-<!-- 	  	<div ng-repeat="i in fb.getNumber(fb.input) track by $index	">
-			<h1>{{$index+1}}</h1>
-	  	</div> -->
-	</section>
+	<section id="results" ng-controller="ResultsController as res" class="col-md-6 col-sm-12">
+		<div id="generate-btn">
+			<button ng-click="res.displayOutput()">Generate!</button>
+		</div>
+		<div id="output"> 
 
+		</div>
+	</section>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>

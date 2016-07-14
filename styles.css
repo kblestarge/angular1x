@@ -1,0 +1,126 @@
+body{
+	background: #F2F2F2;
+	color: #0D0D0D;
+}
+
+button{
+	border: none;
+	background: #404040;
+	color: #b2e4b2;
+	border-radius: 3px;
+}
+
+button:hover{
+	background: #b2e4b2;
+	color: #404040;
+}
+
+h2{
+    font-size: 18px;
+    position: absolute;
+    top: -35px;
+    left: -12px;
+    background: #F2F2F2;
+    padding: 5px;
+}
+
+h1{
+    text-align: center;
+    font-size: 45px;
+    border-bottom: 1px solid;
+    margin: 12px 15px;
+    padding-bottom: 10px;
+    color: #404040;
+}
+
+#count-to{
+    font-size: 30px;
+    text-align: center;
+    display: block;
+    color: #404040;
+    margin: 20px 0;
+}
+
+#count-to input{
+	background: #b2e4b2;
+	text-align: center;
+	border: 1px solid;
+	border-radius: 3px;
+}
+
+#set-rules{
+    margin: 10px 0 0 0;
+    background: #404040;
+    color: #F2F2F2;
+    border-radius: 5px;
+}
+
+#set-rules li{
+	padding: 5px;
+}
+
+#live-rule{
+    margin-bottom: 0;
+}
+
+#andOrPrint{}
+
+#andOrPrint button{}
+
+.numbers{}
+
+#sidenote{
+    position: absolute;
+    bottom: 0;
+}
+
+#results{
+    border-left: 1px solid;
+}
+
+#generate-btn{
+    padding: 20px;
+    border-bottom: 1px solid;
+}
+
+#generate-btn button{
+    font-size: 30px;
+    margin: 0 auto;
+    display: block;
+}
+
+#output{
+    text-align: center;
+    font-size: 18px;
+}
+
+.special{
+	background: lightblue;
+	border-radius: 3px;
+	color: #404040;
+}
+
+#rule-container{
+    border: 1px solid #333;
+    border-right: none;
+    border-bottom: none;
+    padding: 10px;
+    min-height: 300px;
+    font-size: 18px;
+    position: relative;
+}
+
+#new-rule-btns{
+	margin-left: 18px;
+	margin-bottom: 25px;
+}
+
+#new-rule-btns button{
+	margin: 18px 0;
+}
+
+#clear{
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+}
